@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "OpenAI Test";
+}
+
+<div class="container mt-5">
+    <h2>OpenAI Integration Test</h2>
+
+    <pre class="bg-light p-3 rounded" style="white-space: pre-wrap; word-wrap: break-word;">
+@ViewBag.TestResult
+    </pre>
+
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-3">
+        Back to Home
+    </a>
+</div>

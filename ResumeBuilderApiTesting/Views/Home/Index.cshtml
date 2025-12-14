@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Resume & Cover Letter Builder";
+}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <!-- Parse Resume -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Parse Resume</h5>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @ViewBag.Error
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Upload Resume (PDF)</label>
+                            <input type="file" name="file" accept=".pdf" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Generate JSON</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Generate Cover Letter -->
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Parse Cover Letter</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="GenerateCoverLetter" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label class="form-label">Upload Resume (PDF)</label>
+                            <input type="file" name="file" accept=".pdf" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Generate JSON</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Test API Connection -->
+            <div class="card">
+                
+                <div class="card-body">
+                    
+                    <div class="d-grid gap-2">
+                        <form asp-action="TestPerplexityAI" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-warning w-100 mb-2">
+                                Test Resume API
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
